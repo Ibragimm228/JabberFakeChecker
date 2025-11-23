@@ -10,8 +10,7 @@ from handlers import get_router
 
 
 async def main() -> None:
-    """Точка входа в приложение."""
-    
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"

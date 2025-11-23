@@ -8,7 +8,6 @@ router = Router()
 
 @router.message(F.text)
 async def check_jabber(message: Message) -> None:
-    """Проверяет полученный текст на кириллицу."""
     
     if not message.text:
         return

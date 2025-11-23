@@ -11,8 +11,6 @@ class CyrillicChar:
 
 
 class JabberChecker:
-    """Проверяет Jabber ID на наличие кириллических символов."""
-    
     CYRILLIC_PATTERN = re.compile(r'[а-яА-ЯёЁ]')
     
     LOOKALIKE_MAP = {
@@ -30,12 +28,7 @@ class JabberChecker:
     
     @classmethod
     def check(cls, jabber_id: str) -> tuple[bool, List[CyrillicChar]]:
-        """
-        Проверяет Jabber ID на кириллицу.
-        
-        Returns:
-            tuple[bool, List[CyrillicChar]]: (есть_кириллица, список_символов)
-        """
+
         cyrillic_chars = []
         
         for idx, char in enumerate(jabber_id):
@@ -50,7 +43,6 @@ class JabberChecker:
     @classmethod
     def format_result(cls, jabber_id: str, has_cyrillic: bool, 
                      cyrillic_chars: List[CyrillicChar]) -> str:
-        """Форматирует результат проверки для отображения."""
         
         if not has_cyrillic:
             return (
@@ -74,7 +66,6 @@ class JabberChecker:
     @classmethod
     def _highlight_cyrillic(cls, jabber_id: str, 
                            cyrillic_chars: List[CyrillicChar]) -> str:
-        """Подсвечивает кириллические символы в строке."""
         result = []
         cyrillic_positions = {c.position for c in cyrillic_chars}
         
@@ -88,10 +79,9 @@ class JabberChecker:
     
     @classmethod
     def _format_details(cls, cyrillic_chars: List[CyrillicChar]) -> str:
-        """Форматирует детали найденных символов."""
         lines = []
         
-        for char_info in cyrillic_chars[:5]:  # Показываем максимум 5
+        for char_info in cyrillic_chars[:5]: 
             line = f"  • <code>{char_info.char}</code> на позиции {char_info.position + 1}"
             
             if char_info.latin_lookalike:

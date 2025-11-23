@@ -7,7 +7,6 @@ router = Router()
 
 @router.message(CommandStart())
 async def cmd_start(message: Message) -> None:
-    """Обработчик команды /start."""
     await message.answer(
         "👋 <b>Jabber Fake Checker</b>\n\n"
         "Проверяю Jabber ID на наличие кириллических символов.\n\n"
@@ -24,7 +23,6 @@ async def cmd_start(message: Message) -> None:
 
 @router.message(Command("check"))
 async def cmd_check(message: Message) -> None:
-    """Обработчик команды /check."""
     await message.answer(
         "Отправь мне Jabber ID для проверки.\n"
         "Например: <code>user@jabber.ru</code>",
